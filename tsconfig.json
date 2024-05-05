@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"baseUrl": ".",
+		"outDir": ".",
+		"declaration": true,
+		"inlineSourceMap": true,
+		"downlevelIteration": true,
+		"strictNullChecks": true,
+		"moduleResolution": "Node",
+		"esModuleInterop": true
+	},
+	"include": ["index.ts", "react.ts"],
+	"exclude": ["node_modules"]
+}

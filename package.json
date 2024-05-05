@@ -1,0 +1,47 @@
+{
+  "name": "tidy-form",
+  "version": "0.0.1",
+  "main": "index.cjs",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.mjs",
+      "require": "./index.cjs"
+    },
+    "./react": {
+      "types": "./react.d.ts",
+      "import": "./react.mjs",
+      "require": "./react.cjs"
+    }
+  },
+  "scripts": {
+    "prepublishOnly": "./compile.sh"
+  },
+  "files": [
+    "index.cjs",
+    "index.mjs",
+    "index.d.ts",
+    "react.cjs",
+    "react.mjs",
+    "react.d.ts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tranvansang/tidy-form.git"
+  },
+  "author": "Sang Tran <t@sang.jp>",
+  "license": "MIT",
+  "devDependencies": {
+    "type-fest": "^4.18.1",
+    "typescript": "^5.4.5",
+    "@types/react": "*"
+  },
+  "dependencies": {
+    "jdefer": "^0.0.14",
+    "jmisc": "^0.0.12",
+    "misc-hooks": "^0.0.11"
+  },
+  "peerDependencies": {
+    "react": "*"
+  }
+}

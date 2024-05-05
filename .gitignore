@@ -1,0 +1,12 @@
+.idea
+node_modules/
+
+index.cjs
+index.mjs
+index.d.cts
+index.d.mts
+
+react.cjs
+react.mjs
+react.d.cts
+react.d.mts
