@@ -3,10 +3,8 @@ node_modules/
 
 index.cjs
 index.mjs
-index.d.cts
-index.d.mts
+index.d.ts
 
 react.cjs
 react.mjs
-react.d.cts
-react.d.mts
+react.d.ts

@@ -4,8 +4,8 @@ import {useEffectWithPrevDeps} from 'misc-hooks'
 import type {FormControl} from './index.ts'
 import makeFormControl from './index.mjs'
 
-export function useFormControl<T>(defaultValue?: T | (() => T)) {
-	return useState(() => makeFormControl(typeof defaultValue === 'function' ? defaultValue() : defaultValue))[0]
+export function useFormControl<T>(defaultValue?: T | (() => T)): FormControl<T> {
+	return useState(() => makeFormControl<T>(typeof defaultValue === 'function' ? defaultValue() : defaultValue))[0]
 }
 
 export function useFormValue<T>(form: FormControl<T>): T
