@@ -15,15 +15,16 @@ Form control object has the following interface with features described by comme
 ```typescript
 export interface FormControl {
 	// Field can be nested by having dot in between, for example: 'my.nested.field.1'
+	// empty string refers to the whole object
 
 	get() // return all
-	get(field: string) // return single field
-	get(fields: string[]) // return object of multiple fields
+	get(field: string) // return single field. get('') is same as get()
 
-	setAll(action): void // set all fields. action can be object or function that takes current value and returns new value
-	set(field: string, action): void // set field. action can be object or function that takes current value and returns new value
+	// set field. action can be object or function that takes current value and returns new value
+	// return new value at the field
+	set(field: string, action)
 
-	subscribe(cb: (newVal) => any): () => void // subscribe to all fields. return unsubscribe function
+	subscribe(cb: (newVal) => any): () => void // subscribe to all fields. return unsubscribe function. same as subscribe('', cb)
 	subscribe(field: string, cb: (newVal) => any): () => void // subscribe to single field. return unsubscribe function
 }
 ```
