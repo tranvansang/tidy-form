@@ -1,10 +1,10 @@
 import {describe, test, mock} from 'node:test'
-import makeFormControl from './index.mjs'
+import makeForm from './index.mjs'
 import assert from 'node:assert'
 
-describe('makeFormControl()', () => {
+describe('makeForm()', () => {
 	test('empty default', () => {
-		const control = makeFormControl()
+		const control = makeForm()
 		assert.strictEqual(control.get('a'), undefined)
 
 		control.set('a', 'b')
@@ -13,7 +13,7 @@ describe('makeFormControl()', () => {
 	})
 	test('subscription', () => {
 		const fn = mock.fn()
-		const control = makeFormControl()
+		const control = makeForm()
 		control.subscribe('a', fn)
 		control.set('a', 'b')
 		assert.strictEqual(fn.mock.calls[0].arguments[0], 'b')
@@ -27,7 +27,7 @@ describe('makeFormControl()', () => {
 		assert.strictEqual(fn.mock.calls[1].arguments[0], 'c')
 	})
 	test('deep subscription', () => {
-		const control = makeFormControl()
+		const control = makeForm()
 		let fn
 
 		// simple deep subscription
@@ -67,7 +67,7 @@ describe('makeFormControl()', () => {
 		assert.deepStrictEqual(fn.mock.calls[0].arguments[0], {d: 3})
 	})
 	test('fire order', () => {
-		const control = makeFormControl()
+		const control = makeForm()
 		let cnt = 0
 		let a, ab, abc, root
 

@@ -3,13 +3,13 @@
 ## Exported modules
 
 ```javascript
-import makeFormControl from 'tidy-form'
-import { useFormControl, useFormValue } from 'tidy-form/react'
+import makeForm from 'tidy-form'
+import { useForm, useFormValue } from 'tidy-form/react'
 ```
 
 ## Usage
 
-- `makeFormControl(defaultValue)` takes a default value and returns a form control object.
+- `makeForm(defaultValue)` takes a default value and returns a form control object.
 Form control object has the following interface with features described by comments.
 
 ```typescript
@@ -17,6 +17,7 @@ export interface FormControl {
 	// Field can be nested by having dot in between, for example: 'my.nested.field.1'
 	// empty string refers to the whole object
 
+	get value() // return all
 	get() // return all
 	get(field: string) // return single field. get('') is same as get()
 
@@ -29,9 +30,9 @@ export interface FormControl {
 }
 ```
 
-- Exported function from `tidy-form/react` module are `useFormControl` and `useFormValue`.
+- Exported function from `tidy-form/react` module are `useForm` and `useFormValue`.
 
-- `export function useFormControl<T>(defaultValue?: T | (() => T))`: creates a fixed form control object across different renders of the component.
+- `export function useForm<T>(defaultValue?: T | (() => T))`: creates a fixed form control object across different renders of the component.
 `defaultValue` (optional): can be a value or a function that returns a value.
 
 - `export function useFormValue<T>(form: FormControl<T>): T`: returns the whole form control object.

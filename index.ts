@@ -10,6 +10,7 @@ type FormGet<T, K extends string> = K extends '' ? T : Get<T, K>
 export interface FormControl<T> {
 	// Field can be nested by having dot in between
 
+	get value(): T // return all. Same as get('')
 	get(): T // return all. Same as get('')
 	get<K extends string>(field: K): FormGet<T, K> // return single field. empty string to get root value, same as get()
 
@@ -19,11 +20,14 @@ export interface FormControl<T> {
 	subscribe<K extends keyof T & string>(field: K, cb: (newVal: FormGet<T, K>) => any): () => void // subscribe to single field. return unsubscribe function
 }
 
-export default function makeFormControl<T>(defaultValue?: T): FormControl<T> {
+export default function makeForm<T>(defaultValue?: T): FormControl<T> {
 	let value: T = defaultValue
 	const streams: Partial<Record<keyof T, IBroadcastStream<T[keyof T]>>> = {}
 	const counts: Partial<Record<keyof T, number>> = {}
 	return {
+		get value() {
+			return value
+		},
 		get(field) {
 			return get(value, field === '' ? undefined : field)
 		},

@@ -2,10 +2,10 @@ import {useEffect, useState} from 'react'
 import type {Get} from 'type-fest'
 import {useEffectWithPrevDeps} from 'misc-hooks'
 import type {FormControl} from './index.ts'
-import makeFormControl from './index.mjs'
+import makeForm from './index.mjs'
 
-export function useFormControl<T>(defaultValue?: T | (() => T)): FormControl<T> {
-	return useState(() => makeFormControl<T>(typeof defaultValue === 'function' ? defaultValue() : defaultValue))[0]
+export function useForm<T>(defaultValue?: T | (() => T)): FormControl<T> {
+	return useState(() => makeForm<T>(typeof defaultValue === 'function' ? defaultValue() : defaultValue))[0]
 }
 
 export function useFormValue<T>(form: FormControl<T>): T
